@@ -28,10 +28,24 @@ for i in movie_title :
   rank+=1
 title=title[:100]
 ranking=ranking[:100]
-
 #print(title)-영화 제목
 #print(ranking)-영화 순위
 
 for i in range(len(title)) :
   print(f'{ranking[i]}등 : {title[i]}')
 #역대 100위까지의 영화 출력
+
+#김건우-원하는 순위의 영화 정보 출력
+movie_information = driver.find_elements_by_class_name("rowGroup")
+ 
+information=[]
+for i in movie_information :
+  information.append(i.text)
+information=information[:100]
+#print(information)-박스오피스 순위의 영화 정보 크롤링(순위 영화명 개봉일 매출액 관객수 스크린수)
+
+movie_want=list(map(int,input('순위를 입력하시오(순위 영화명 개봉일 매출액 관객수 스크린수) : ').split()))
+for i in movie_want :
+  print(information[i-1])
+  print('')
+#원하는 순위의 영화 정보 출력
